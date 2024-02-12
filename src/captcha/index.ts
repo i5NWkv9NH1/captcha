@@ -65,6 +65,7 @@ export class Captcha {
       onEnd: this.options.onEnd,
       onChange: (_, rate, event) => {
         this.options.onChange(rate, event)
+        // * 滑动的时候更改图片位置
         this.captchaCavans && this.captchaCavans.moveDraw(rate)
       },
       finish: (_, rate) => {
