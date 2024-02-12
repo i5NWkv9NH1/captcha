@@ -126,6 +126,3 @@ export class Captcha {
   }
 
 }
-
-
-export default Captcha

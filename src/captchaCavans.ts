@@ -1,3 +1,5 @@
+import { createKey } from "./createKey"
+
 export type CaptchaCavansOptions = {
   el: HTMLElement | Element | null
   picList: string[]
@@ -119,7 +121,7 @@ export class CaptchaCavans {
 
 
   public init() {
-    this.key = this.createKey()
+    this.key = createKey()
     this.createElement()
     this.initValue()
     // 加载图片并且绘制图像
@@ -374,10 +376,6 @@ export class CaptchaCavans {
     this.imageIndex = this.imageIndex + 1 >= this.options.picList.length ? 0 : this.imageIndex + 1
   }
 
-  public createKey() {
-    const getHex = () => Number.parseInt(String(Math.random() * 256)).toString(16).padStart(2, '0')
-    return `${getHex()}${getHex()}${getHex()}-${Date.now()}`
-  }
 
   public createStyle() {
     const style = document.createElement('style')

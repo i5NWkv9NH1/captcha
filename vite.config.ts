@@ -8,7 +8,7 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/captcha/index.ts'),
+      entry: resolve(__dirname, 'src/index.ts'),
       // * for browser variable name
       name: 'Captcha',
       fileName: 'captcha',

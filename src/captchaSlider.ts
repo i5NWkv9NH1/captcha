@@ -1,4 +1,4 @@
-import { createKey } from "../createKey"
+import { createKey } from "./createKey"
 
 export type CaptchaSliderOptions = {
   el: HTMLElement | HTMLDivElement | null
