@@ -1,5 +1,5 @@
 export type CaptchaCavansOptions = {
-  el: HTMLElement | null
+  el: HTMLElement | Element | null
   picList: string[]
   vailadeValue: number
   showReload: boolean
@@ -84,7 +84,7 @@ export class CaptchaCavans {
       throw TypeError(``)
     } else {
       if (typeof options.el === 'string') {
-        options.el = document.querySelector(options.el)
+        options.el = document.querySelector(options.el)!
       }
     }
     //#endregion
@@ -144,7 +144,7 @@ export class CaptchaCavans {
     canvas.setAttribute('captcha-canvas', this.key)
     canvas.setAttribute('style', 'border-radius: 6px;')
 
-    const { width } = this.options.el?.getBoundingClientRect()
+    const { width } = this.options.el.getBoundingClientRect()
     canvas.width = width
     canvas.height = width * this.rectRate
 

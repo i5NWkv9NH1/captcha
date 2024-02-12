@@ -1,15 +1,20 @@
 // vite.config.ts
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import commonjs from 'vite-plugin-commonjs'
+
 import dts from 'vite-plugin-dts';
 // https://vitejs.dev/guide/build.html#library-mode
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      name: 'captcha',
+      entry: resolve(__dirname, 'src/captcha/index.ts'),
+      // * for browser variable name
+      name: 'Captcha',
       fileName: 'captcha',
+      // ? cjs not work with borwser
+      formats: ['iife', 'es', 'umd',]
     },
   },
-  plugins: [dts()],
+  plugins: [dts(), commonjs()],
 });

@@ -1,7 +1,7 @@
-import { createKey } from "./createKey"
+import { createKey } from "../createKey"
 
 export type CaptchaSliderOptions = {
-  el: HTMLDivElement | HTMLElement
+  el: HTMLElement | HTMLDivElement | null
   // TODO: return type
   finish: (slider: CaptchaSlider, rate: number) => any
   onStart?: (event: Event) => void
@@ -77,6 +77,7 @@ export class CaptchaSlider {
     this.key = createKey()
     this.createElement()
     this.createStyles()
+    this.bidingEvents()
   }
 
   public createElement() {
@@ -95,10 +96,10 @@ export class CaptchaSlider {
   `
     const wrapperEl = document.createElement('div')
     wrapperEl.setAttribute('class', `captcha_slide_wrapper`)
-    wrapperEl.setAttribute('style', `width: ${this.options.el.offsetWidth}px`)
+    wrapperEl.setAttribute('style', `width: ${this.options.el!.offsetWidth}px`)
     wrapperEl.setAttribute('captcha-slider', this.key)
     wrapperEl.innerHTML = html
-    this.options.el.appendChild(wrapperEl)
+    this.options.el!.appendChild(wrapperEl)
   }
 
   public bidingEvents() {
@@ -108,7 +109,8 @@ export class CaptchaSlider {
     this.validateSucEl = document.querySelector(`.captcha_slide_valide_success[captcha-slider="${this.key}"]`)!
     this.slideTipEl = document.querySelector(`.captcha_slide_tip[captcha-slider="${this.key}"]`)!
 
-    if (typeof document['ontouchstart'] !== undefined) {
+
+    if (typeof document['ontouchstart'] !== 'undefined') {
       this.mobileBindingEvents()
     } else {
       this.pcBindingEvents()
@@ -128,6 +130,7 @@ export class CaptchaSlider {
         this.options.onStart && this.options.onStart(event)
       }
     }
+    document.addEventListener('mousedown', this.onMouseDown)
     this.onMouseMove = (event) => {
       if (this.isMouseDown) {
         const rect = this.slideWrapperEl.getBoundingClientRect()
@@ -141,6 +144,7 @@ export class CaptchaSlider {
         this.options.onChange && this.options.onChange(this, this.rate, event)
       }
     }
+    document.addEventListener('mousemove', this.onMouseMove)
     this.onMouseUp = (event) => {
       if (this.isMouseDown) {
         // 完成时，向外传递完成的信息
@@ -159,11 +163,11 @@ export class CaptchaSlider {
       this.isMouseDown = false
     }
     document.addEventListener('mouseup', this.onMouseUp)
-    document.addEventListener('mousemove', this.onMouseMove)
-    document.addEventListener('mousedown', this.onMouseDown)
+
   }
 
   public mobileBindingEvents() {
+    console.log('mobile events')
     this.onTouchStart = (event: Event) => {
       const target = (event.target as HTMLElement)
 

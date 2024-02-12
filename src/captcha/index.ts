@@ -15,7 +15,7 @@ import { CaptchaSlider } from "./captchaSlider"
   * showReload Boolean 是否显示右上角重新加载按钮 (默认true)
   * slideSizeRate: Number 滑块尺寸比率： 滑块实际尺寸 = 容器width * slideSizeRate； 范围 [0.01, 0.3] 默认0.1
  */
-type CaptchaOptions = {
+export type CaptchaOptions = {
   el: HTMLElement
   vailadeValue: number
   picList: string[]
@@ -125,3 +125,6 @@ export class Captcha {
   }
 
 }
+
+
+export default Captcha
