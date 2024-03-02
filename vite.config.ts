@@ -6,7 +6,7 @@ import commonjs from 'vite-plugin-commonjs'
 import dts from 'vite-plugin-dts';
 // https://vitejs.dev/guide/build.html#library-mode
 export default defineConfig({
-  base: '/scrollbar/',
+  base: '/catpcha/',
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
