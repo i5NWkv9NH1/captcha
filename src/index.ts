@@ -1,5 +1,5 @@
-import { CaptchaCavans } from "./captchaCavans"
-import { CaptchaSlider } from "./captchaSlider"
+import { CaptchaCavans } from "./CaptchaCavans"
+import { CaptchaSlider } from "./CaptchaSlider"
 
 /**
  * @name

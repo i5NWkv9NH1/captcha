@@ -1,0 +1,68 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  background: #121212;
+  position: relative;
+  overflow: hidden;
+}
+
+.captcha {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow-x: auto;
+}
+
+.slider-captcha-box {
+  width: 80%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 5px;
+  background: #ffffff;
+}
+
+.bottom-contral {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+.bottom-contral button {
+  padding: 6px 12px;
+}
+
+.contraller {
+  display: flex;
+  justify-content: flex-end;
+  margin: -8px 0 7px 0;
+}
+
+.contraller .icon-guanbicuowu {
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px;
+  transition: background .3s ease;
+}
+
+.contraller .icon-guanbicuowu:hover {
+  background: #eee;
+}
+
+
+#container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+}
+
+

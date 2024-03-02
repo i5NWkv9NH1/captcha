@@ -1,3 +1,4 @@
+import { State } from "./CaptchaSlider"
 import { createKey } from "./createKey"
 
 export type CaptchaCavansOptions = {
@@ -7,7 +8,6 @@ export type CaptchaCavansOptions = {
   showReload: boolean
   slideSizeRate: any
 }
-
 
 export class CaptchaCavans {
   public context!: CanvasRenderingContext2D | null
@@ -199,9 +199,14 @@ export class CaptchaCavans {
 
   public bindingEvents() {
     if (!this.showReload) return
+    // # reload event
+    // TODO: hidden reload button when slide state = IDLE
+    // TODO: or
+    // TODO: reset slide button state
     const reloadEl = document.querySelector(`.captcha_canvas_reload_box[captcha-canvas="${this.key}"]`)
     this.onClick = () => {
       this.loadImage()
+      this.initDraw()
     }
     reloadEl!.addEventListener('click', this.onClick)
   }
@@ -216,7 +221,7 @@ export class CaptchaCavans {
       // 随机生成滑块的位置
       this.getRandomPosition()
       // 初始化绘制图像
-      this.initDraw()
+      // this.initDraw()
       // 显示canvas
       this.canvasEl!.style.opacity = '1'
     }
@@ -276,11 +281,11 @@ export class CaptchaCavans {
   }
 
   /**
- * 画滑块
- * context 要画的context
- * x: 开始横坐标位置
- * y: 开始纵坐标位置
- */
+   * 画滑块
+   * context 要画的context
+   * x: 开始横坐标位置
+   * y: 开始纵坐标位置
+   */
   public drawSlider(context: CanvasRenderingContext2D, x: number, y: number) {
     const { slideWidth: w, slidHeight: h, jx, kx, r } = this
     context.beginPath()
@@ -298,13 +303,13 @@ export class CaptchaCavans {
     context.stroke()
   }
   /*
-  * 创建触发滑块
-  * w 滑块宽度
-  * h 滑块高度
-  * deg 夹角角度
-  * sx 裁剪位置x（缩放后的位置，也就是canvas的图片位置）
-  * sx 裁剪位置y（缩放后的位置，也就是canvas的图片位置）
-  * scale 缩放比例 [横向缩放比例，纵向缩放比例]
+    * 创建触发滑块
+    * w 滑块宽度
+    * h 滑块高度
+    * deg 夹角角度
+    * sx 裁剪位置x（缩放后的位置，也就是canvas的图片位置）
+    * sx 裁剪位置y（缩放后的位置，也就是canvas的图片位置）
+    * scale 缩放比例 [横向缩放比例，纵向缩放比例]
   */
   public drawTargetSlider(sx: number, sy: number) {
     const { slideWidth: w, slidHeight: h, kx, r, scale } = this
@@ -394,3 +399,4 @@ export class CaptchaCavans {
     document.head.appendChild(style)
   }
 }
+export default CaptchaCavans

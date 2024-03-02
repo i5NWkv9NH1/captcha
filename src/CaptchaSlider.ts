@@ -443,3 +443,5 @@ export class CaptchaSlider {
     document.head.appendChild(styleEl)
   }
 }
+
+export default CaptchaSlider

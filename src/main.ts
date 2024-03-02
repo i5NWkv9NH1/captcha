@@ -4,8 +4,10 @@ import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
-
-
+import GithubDark from 'monaco-themes/themes/GitHub Dark.json'
+// @ts-ignore
+import { parseTmTheme } from 'monaco-themes'
+import './index.css'
 
 const initValue = `
 var captchaSlider = new Captcha.default({
@@ -77,6 +79,7 @@ self.MonacoEnvironment = {
   }
 }
 
+
 monaco.editor.create(document.getElementById('container')!, {
   value: initValue,
   language: 'javascript',
@@ -84,8 +87,10 @@ monaco.editor.create(document.getElementById('container')!, {
   roundedSelection: false,
   scrollBeyondLastLine: false,
   readOnly: false,
-  theme: 'vs-dark'
+  theme: 'github dark'
 })
+monaco.editor.defineTheme('github-dark', GithubDark as any)
+monaco.editor.setTheme('github-dark')
 
 
 createScript(initValue)
