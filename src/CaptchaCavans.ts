@@ -1,4 +1,3 @@
-import { State } from "./CaptchaSlider"
 import { createKey } from "./createKey"
 
 export type CaptchaCavansOptions = {
