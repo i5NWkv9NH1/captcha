@@ -1,7 +1,6 @@
 {
   "name": "@sora/captcha",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -32,5 +31,20 @@
     "monaco-editor": "^0.46.0",
     "monaco-themes": "^0.4.4",
     "uuid": "^9.0.1"
-  }
+  },
+  "description": "A JavaScrpit library captcha",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/i5NWkv9NH1/captcha.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "Captcha"
+  ],
+  "author": "sora",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/i5NWkv9NH1/captcha/issues"
+  },
+  "homepage": "https://github.com/i5NWkv9NH1/captcha#readme"
 }
